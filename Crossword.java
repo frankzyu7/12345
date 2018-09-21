@@ -1,4 +1,3 @@
-package Assignment2;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
