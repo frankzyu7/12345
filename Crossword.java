@@ -4,8 +4,10 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -66,6 +68,44 @@ public class Crossword {
 
         generate(panel);
 
+        JPanel InputContainer = new JPanel(new FlowLayout());
+        InputContainer.add(new JLabel("Please enter:"));
+        InputContainer.add(new JLabel("x:"));
+
+        // JTextField xTextfield = new JTextField();
+        // xTextfield.setColumns(1);
+        // InputContainer.add(xTextfield);
+
+        Integer[] indexData = new Integer[20];
+        for (int i = 0; i < 20; i++) {
+            indexData[i] = i + 1;
+        }
+        JComboBox<Integer> xComboBox = new JComboBox<>(indexData);
+        InputContainer.add(xComboBox);
+
+        InputContainer.add(new JLabel("y:"));
+        // JTextField yTextfield = new JTextField();
+        // yTextfield.setColumns(1);
+        // InputContainer.add(yTextfield);
+        JComboBox<Integer> yComboBox = new JComboBox<>(indexData);
+        InputContainer.add(yComboBox);
+
+        InputContainer.add(new JLabel("Letter:"));
+        // JTextField xTextfield = new JTextField();
+        // xTextfield.setColumns(1);
+        // InputContainer.add(xTextfield);
+        
+        Character[] list = new Character[26];
+        for (int i = 0; i < 26; i++) {
+            list[i]=(char) (65 + i);
+        }
+        JComboBox<Character> letterComboBox = new JComboBox<>(list);
+        InputContainer.add(letterComboBox);
+        
+        JButton submitButton = new JButton("Submit");
+        InputContainer.add(submitButton);
+        f.getContentPane().add(InputContainer, BorderLayout.SOUTH);
+
         f.setSize(800, 800);
         f.setLocationRelativeTo(null);
         f.setVisible(true);
@@ -84,6 +124,10 @@ public class Crossword {
         }
 
         panel.setCrossword(crossword);
+    }
+
+    class InputPanel extends JPanel {
+
     }
 
     class CrosswordPanel extends JPanel {
